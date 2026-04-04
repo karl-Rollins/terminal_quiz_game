@@ -3,7 +3,7 @@
 if [[ "$1" == "highscores" ]]; then
     echo "HIGH SCORES"
     if [[ -f "highscore.txt" ]]; then
-        cat "highscore.txt" | head -n 5
+        head -n 5 "highscore.txt"
     fi
     exit 0
 elif [[ "$1" == "practice" ]]; then
@@ -19,7 +19,7 @@ elif [[ ! -s "$Questions" ]]; then
     echo "File is empty"
 fi 
 
-read -p "Enter User name: " username </dev/tty
+read -rp "Enter User name: " username </dev/tty
 
 TOTAL_COUNT=$(wc -l < questions.txt)
 TOTAL_QUESTIONS=0
@@ -46,7 +46,7 @@ while IFS= read -r line; do
     echo "option_d: ${parts[4]}"
 
     until [[ "$ans" == "${parts[5]}" ]]; do
-        read -p "Enter your answer (A/B/C/D): " ans </dev/tty
+        read -rp "Enter your answer (A/B/C/D): " ans </dev/tty
         ans=${ans^^}
         #ans^^ changes all the input to upper case. 
 
@@ -75,7 +75,7 @@ while IFS= read -r line; do
         fi
     done
 
-    read -p "Press Enter to continue." </dev/tty
+    read -rp "Press Enter to continue." </dev/tty
     #echo "answer: ${parts[5]}"
     echo ""
 
