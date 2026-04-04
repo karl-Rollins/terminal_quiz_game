@@ -91,4 +91,3 @@ else
     echo "Correct: $Correct_COUNT Incorrect: $Wrong_COUNT longest streak: $MAX_STREAK Final score: $percentage%"
     echo "$username | $percentage% | $Correct_COUNT/$TOTAL_QUESTIONS | $(date "+%Y-%m-%d")" >> highscore.txt
 fi
-
