@@ -39,18 +39,17 @@ while IFS= read -r line; do
     FIRST_ATTEMPT=true
 
     echo "Question $TOTAL_QUESTIONS of $TOTAL_COUNT"
-    echo "question_text: ${parts[0]}"
-    echo "option_a: ${parts[1]}"
-    echo "option_b: ${parts[2]}"
-    echo "option_c: ${parts[3]}"
-    echo "option_d: ${parts[4]}"
+    echo "${parts[0]}"
+    echo "${parts[1]}"
+    echo "${parts[2]}"
+    echo "${parts[3]}"
+    echo "${parts[4]}"
 
-    until [[ "$ans" == "${parts[5]}" ]]; do
-        read -rp "Enter your answer (A/B/C/D): " ans </dev/tty
-        ans=${ans^^}
-        #ans^^ changes all the input to upper case. 
+    read -rp "Enter your answer (A/B/C/D): " ans </dev/tty
+    ans=${ans^^}
+    #ans^^ changes all the input to upper case. 
 
-        if [[ "$ans" == "${parts[5]}" ]]; then
+    if [[ "$ans" == "${parts[5]}" ]]; then
             echo  -e "\e[32mCorrect!\e[0m"
             ((Correct_COUNT++))
 
@@ -64,16 +63,15 @@ while IFS= read -r line; do
             fi
         
          
-        elif [[ "$PRACTICE" == true ]]; then
-                echo "Incorrect. the correct answer was ${parts[5]}"
-        else
-            echo  -e "\e[31mWrong. Try again\e[0m"
-            ((Wrong_COUNT++))
-            STREAK=0
-            FIRST_ATTEMPT=false
+    elif [[ "$PRACTICE" == true ]]; then
+        echo  -e "\e[31mWrong.The answer is ${parts[5]}\e[0m"
+    else
+        echo  -e "\e[31mWrong.The answer is ${parts[5]}\e[0m"
+        ((Wrong_COUNT++))
+        STREAK=0
+        FIRST_ATTEMPT=false
             
-        fi
-    done
+    fi
 
     read -rp "Press Enter to continue." </dev/tty
     #echo "answer: ${parts[5]}"
@@ -87,7 +85,7 @@ if [[ "$PRACTICE" ==  true ]];then
     echo "Practice is over. Scores are not saved"
 else 
     echo "Quiz finished"
-    percentage=$(( (Correct_COUNT * 100) / TOTAL_QUESTIONS ))
+    percentage=$(( Correct_COUNT * 100 / TOTAL_QUESTIONS   ))
     echo "Correct: $Correct_COUNT Incorrect: $Wrong_COUNT longest streak: $MAX_STREAK Final score: $percentage%"
     echo "$username | $percentage% | $Correct_COUNT/$TOTAL_QUESTIONS | $(date "+%Y-%m-%d")" >> highscore.txt
 fi
