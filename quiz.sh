@@ -3,7 +3,7 @@
 if [[ "$1" == "highscores" ]]; then
     echo "HIGH SCORES"
     if [[ -f "highscore.txt" ]]; then
-        head -n 5 "highscore.txt"
+        sort -t '|' -k2,2rn "highscore.txt" | head -n 5 
     fi
     exit 0
 elif [[ "$1" == "practice" ]]; then
