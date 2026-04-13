@@ -19,8 +19,7 @@ Bash
 ## 📷 Screenshots
 
 ![alt text](<Screenshot from 2026-04-09 12-49-05.png>)
-![alt text](<Screenshot from 2026-04-09 12-49-22.png>)
-![alt text](<Screenshot from 2026-04-09 12-50-03.png>)
+![alt text](<Screenshot from 2026-04-13 12-28-35.png>)
 
 ## ⚙ Installation & Setup
 
