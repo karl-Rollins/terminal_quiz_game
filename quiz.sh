@@ -30,7 +30,7 @@ MAX_STREAK=0
 
 while IFS= read -r line; do
     clear
-    #to clear the screen
+    #to clear the screenREADME.md
 
     IFS='|' read -ra parts <<< "$line"
     #| is the delimeter. -a stores parts in arrays
@@ -47,8 +47,18 @@ while IFS= read -r line; do
 
     read -rp "Enter your answer (A/B/C/D): " ans </dev/tty
     ans=${ans^^}
-    #ans^^ changes all the input to upper case. 
+    #ans^^ changes all the input to upper case.
 
+    while true; do
+        if [[ "$ans" != "A" && "$ans" != "B" && "$ans" != "C" && "$ans" != "D" ]]; then
+            echo "Invalid Input. Enter either A,B,C,D."
+            read -rp "Enter your answer (A/B/C/D): " ans </dev/tty
+            ans=${ans^^}
+        else
+            break;
+        fi
+    done
+      
     if [[ "$ans" == "${parts[5]}" ]]; then
             echo  -e "\e[32mCorrect!\e[0m"
             ((Correct_COUNT++))
@@ -69,11 +79,11 @@ while IFS= read -r line; do
         echo  -e "\e[31mWrong.The answer is ${parts[5]}\e[0m"
         ((Wrong_COUNT++))
         STREAK=0
-        FIRST_ATTEMPT=false
-            
+        FIRST_ATTEMPT=false     
     fi
 
-    read -rp "Press Enter to continue." </dev/tty
+    sleep 2
+    #read -rp "Press Enter to continue." </dev/tty
     #echo "answer: ${parts[5]}"
     echo ""
 

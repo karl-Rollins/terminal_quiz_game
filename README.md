@@ -18,8 +18,8 @@ Bash
 
 ## 📷 Screenshots
 
-![alt text](<Screenshot from 2026-04-09 12-49-05.png>)
-![alt text](<Screenshot from 2026-04-13 12-28-35.png>)
+![Image that shows Code](<assets/Screenshot from 2026-04-09 12-49-05.png>)
+![Output in terminal](<assets/Screenshot from 2026-04-12 09-32-57.png>)
 
 ## ⚙ Installation & Setup
 
